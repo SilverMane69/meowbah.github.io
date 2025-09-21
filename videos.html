@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Videos - Meowbah</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Theme color -->
+    <meta name="theme-color" content="#ff69b4">
+    
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-brand">Meowbah</div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="videos.html" class="active">Videos</a></li>
+                <li><a href="art.html">Art</a></li>
+                <li><a href="merch.html">Merch</a></li>
+                <li><a href="meowtalk.html">MeowTalk</a></li>
+                <li><a href="posts.html">Posts</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero videos-hero">
+        <div class="container">
+            <h1>Meowbah Videos</h1>
+            <p>The wildest, most chaotic content on the internet</p>
+            <div class="video-stats">
+                <span class="stat-item" id="videoCount">Loading...</span>
+                <span class="stat-item" id="totalViews">Loading...</span>
+                <span class="stat-item">Updated Recently</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Filters -->
+    <section class="filters-section">
+        <div class="container">
+            <div class="video-filters">
+                <button class="filter-btn active" data-filter="all">All Videos</button>
+                <button class="filter-btn" data-filter="showcase">Showcase</button>
+                <button class="filter-btn" data-filter="qna">Q&A</button>
+                <button class="filter-btn" data-filter="animation">Animation</button>
+                <button class="filter-btn" data-filter="collab">Collabs</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Videos Section -->
+    <section class="videos-section">
+        <div class="container">
+            <div class="loading" id="loading">Loading Meowbah's latest chaos... 🐾</div>
+            <div class="video-grid" id="videoGrid">
+                <!-- Videos will load from YouTube feed -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Load More Button -->
+    <section class="load-more-section">
+        <div class="container">
+            <button id="loadMore" class="load-more-btn">Load More Videos</button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Meowbah. All rights meow-served! | <a href="https://www.youtube.com/channel/UCNytjdD5-KZInxjVeWV_qQw" target="_blank">Subscribe on YouTube</a></p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
