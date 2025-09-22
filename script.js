@@ -4,13 +4,13 @@ class YouTubeVideoLoader {
         this.videos = [];
         this.displayedVideos = 0;
         this.videosToShow = 6; // Initial load
-        this.currentFilter = 'all';
-        this.init();
+        this.currentFilter = 'all'; // FIX: Initialize the default filter
     }
 
     async init() {
         try {
             await this.loadVideos();
+            this.displayedVideos = this.videosToShow; 
             this.updateStats();
             this.renderVideos();
             this.setupFilters();
@@ -23,9 +23,9 @@ class YouTubeVideoLoader {
     }
 
     async loadVideos() {
-        // Load from your local XML file
         const response = await fetch('meowbah-videos.xml');
         if (!response.ok) {
+            console.error('Error fetching XML:', response.statusText);
             throw new Error(`HTTP error! status: ${response.status}`);
         }
         
@@ -33,8 +33,8 @@ class YouTubeVideoLoader {
         const parser = new DOMParser();
         const xmlDoc = parser.parseFromString(xmlText, 'text/xml');
         
-        // Check for parsing errors
         if (xmlDoc.querySelector('parsererror')) {
+            console.error('XML parsing error:', xmlDoc.querySelector('parsererror').textContent);
             throw new Error('XML parsing error in YouTube feed');
         }
         
@@ -43,17 +43,16 @@ class YouTubeVideoLoader {
             const mediaGroup = entry.querySelector('media\\:group') || entry.querySelector('group');
             const title = entry.querySelector('title').textContent;
             const videoId = entry.querySelector('yt\\:videoId')?.textContent || 
-                          entry.querySelector('videoId')?.textContent;
+                            entry.querySelector('videoId')?.textContent;
             const thumbnail = mediaGroup?.querySelector('media\\:thumbnail')?.getAttribute('url') || 
-                            `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`;
+                                `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`;
             const description = mediaGroup?.querySelector('media\\:description')?.textContent || 
-                              entry.querySelector('description')?.textContent || 'No description available';
+                                entry.querySelector('description')?.textContent || 'No description available';
             const published = entry.querySelector('published')?.textContent;
             const views = mediaGroup?.querySelector('media\\:statistics')?.getAttribute('views') || 'N/A';
             const url = entry.querySelector('link')?.getAttribute('href') || 
                        `https://www.youtube.com/watch?v=${videoId}`;
             
-            // Extract category from title/description for filtering
             const category = this.extractCategory(title, description);
             
             return {
@@ -121,7 +120,7 @@ class YouTubeVideoLoader {
                 <a href="${video.url}" target="_blank" rel="noopener noreferrer" class="video-link">
                     <div class="video-thumbnail">
                         <img src="${video.thumbnail}" alt="${video.title}" loading="lazy" 
-                             onerror="this.src='https://via.placeholder.com/480x270/ff69b4/ffffff?text=Meowbah+Video'">
+                                onerror="this.src='https://via.placeholder.com/480x270/ff69b4/ffffff?text=Meowbah+Video'">
                         <div class="play-overlay">
                             <span class="play-button">▶</span>
                         </div>
@@ -140,7 +139,6 @@ class YouTubeVideoLoader {
             </div>
         `).join('');
 
-        // Update load more button
         const totalAvailable = filteredVideos.length;
         if (this.displayedVideos >= totalAvailable) {
             document.getElementById('loadMore').style.display = 'none';
@@ -148,7 +146,6 @@ class YouTubeVideoLoader {
             document.getElementById('loadMore').style.display = 'block';
         }
 
-        // Add hover effects
         container.querySelectorAll('.video-card').forEach(card => {
             card.addEventListener('mouseenter', () => {
                 card.style.transform = 'translateY(-5px)';
@@ -167,7 +164,7 @@ class YouTubeVideoLoader {
                 btn.classList.add('active');
                 
                 this.currentFilter = btn.dataset.filter;
-                this.displayedVideos = this.videosToShow; // Reset to initial count
+                this.displayedVideos = this.videosToShow; 
                 this.renderVideos();
             });
         });
@@ -213,7 +210,6 @@ class YouTubeVideoLoader {
     formatNumber(num) {
         const number = parseInt(num);
         if (!number) return 'N/A';
-        
         if (number >= 1000000) {
             return (number / 1000000).toFixed(1) + 'M';
         } else if (number >= 1000) {
@@ -273,22 +269,22 @@ class YouTubeVideoLoader {
 // Global variable for button access
 let youtubeLoader;
 
-// Initialize when DOM loads
-document.addEventListener('DOMContentLoaded', function() {
+// Initialize when the entire page has finished loading
+window.onload = function() {
     // Set active nav link
     const currentPage = window.location.pathname.split('/').pop() || 'index.html';
     const navLinks = document.querySelectorAll('.nav-menu a');
-    
     navLinks.forEach(link => {
         const href = link.getAttribute('href');
         if (href === currentPage) {
             link.classList.add('active');
         }
     });
-
+    
     // Initialize YouTube video loader on videos page
     if (window.location.pathname.includes('videos.html')) {
         youtubeLoader = new YouTubeVideoLoader();
+        youtubeLoader.init();
     }
 
     // Header scroll effect
@@ -308,7 +304,6 @@ document.addEventListener('DOMContentLoaded', function() {
         threshold: 0.1,
         rootMargin: '0px 0px -50px 0px'
     };
-
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -317,15 +312,13 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }, observerOptions);
-
-    // Observe all cards
     document.querySelectorAll('.content-card, .video-card, .post-card').forEach(el => {
         el.style.opacity = '0';
         el.style.transform = 'translateY(30px)';
         el.style.transition = 'all 0.6s ease';
         observer.observe(el);
     });
-});
+};
 
 // Global functions for HTML onclick
 function setYouTubeFilter(filter) {
