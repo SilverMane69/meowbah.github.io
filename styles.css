@@ -62,6 +62,8 @@ body {
     text-shadow: 0 0 20px rgba(255, 105, 180, 0.3);
 }
 
+/* --- DESKTOP STATE (CLEAN) --- */
+
 .nav-menu {
     display: flex;
     list-style: none;
@@ -73,7 +75,13 @@ body {
     color: var(--gray-dark);
     font-weight: 500;
     position: relative;
-    padding: 0.5rem 0;
+    
+    /* DEFINITIVE GAP FIX: Fine-tuned padding, line-height, and positioning */
+    display: inline-block;
+    vertical-align: top; /* Prevents base-line gap */
+    line-height: 1.1; 
+    padding: 0.2rem 0; 
+    
     transition: all 0.3s ease;
     text-transform: uppercase;
     letter-spacing: 0.5px;
@@ -85,7 +93,8 @@ body {
     position: absolute;
     width: 0;
     height: 2px;
-    bottom: 0;
+    /* PULLS THE LINE UP: Compensates for line-height and browser quirks */
+    bottom: -3px; 
     left: 0;
     background: linear-gradient(90deg, var(--pink-primary), var(--pink-secondary));
     transition: width 0.3s ease;
@@ -100,10 +109,14 @@ body {
     text-shadow: 0 0 10px rgba(255, 105, 180, 0.5);
 }
 
-/* Active nav link */
+/* Active nav link: Uses ::after element for the underline */
 .nav-menu a.active {
     color: var(--pink-primary);
-    border-bottom: 2px solid var(--pink-primary);
+    border-bottom: none; /* Removed original conflicting border */
+}
+
+.nav-menu a.active::after {
+    width: 100%;
 }
 
 /* Hero Section */
@@ -127,7 +140,7 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="75" r="1.5" fill="white" opacity="0.1"/><circle cx="50" cy="10" r="0.8" fill="white" opacity="0.05"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+    background: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><pattern id='grain' width='100' height='100' patternUnits='userSpaceOnUse'><circle cx='25' cy='25' r='1' fill='white' opacity='0.1'/><circle cx='75' cy='75' r='1.5' fill='white' opacity='0.1'/><circle cx='50' cy='10' r='0.8' fill='white' opacity='0.05'/></pattern></defs><rect width='100' height='100' fill='url(%23grain)'/></svg>");
     pointer-events: none;
 }
 
@@ -638,9 +651,6 @@ body {
     border: none;
     padding: 10px 25px;
     border-radius: 25px;
-    font-weight: 600;
-    cursor: pointer;
-    margin-top: 1rem;
     transition: all 0.3s ease;
 }
 
@@ -660,7 +670,6 @@ body {
 .art-placeholder {
     height: 300px;
     border-radius: 15px;
-    margin-bottom: 1rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -687,7 +696,6 @@ body {
 .product-image {
     height: 250px;
     border-radius: 10px;
-    margin-bottom: 1rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -708,8 +716,6 @@ body {
     border: none;
     padding: 10px 25px;
     border-radius: 25px;
-    cursor: pointer;
-    font-weight: 600;
     transition: all 0.3s ease;
 }
 
@@ -743,7 +749,6 @@ body {
 .contact-link {
     color: var(--pink-primary);
     text-decoration: none;
-    font-weight: 600;
     border-bottom: 2px solid transparent;
     transition: all 0.3s ease;
 }
@@ -781,13 +786,16 @@ body {
 .post-meta {
     color: #666;
     font-size: 0.9rem;
-    margin: 0.5rem 0;
 }
 
 .read-more {
     color: var(--pink-primary);
     text-decoration: none;
-    font-weight: 600;
+    border-bottom: 2px solid transparent;
+}
+
+.read-more:hover {
+    border-bottom-color: var(--pink-primary);
 }
 
 /* Video Preview */
@@ -831,9 +839,7 @@ body {
 .watch-more {
     color: var(--pink-primary);
     text-decoration: none;
-    font-weight: 600;
     border-bottom: 2px solid transparent;
-    transition: all 0.3s ease;
 }
 
 .watch-more:hover {
@@ -855,7 +861,6 @@ body {
 .art-thumb {
     height: 250px;
     border-radius: 15px;
-    margin-bottom: 1rem;
     position: relative;
     overflow: hidden;
 }
@@ -878,9 +883,6 @@ body {
     font-weight: 600;
     margin-top: 1rem;
     border: 2px solid var(--pink-primary);
-    padding: 10px 25px;
-    border-radius: 25px;
-    transition: all 0.3s ease;
 }
 
 .view-gallery:hover {
@@ -905,11 +907,9 @@ body {
 .product-thumb {
     height: 200px;
     border-radius: 15px;
-    margin-bottom: 1rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 2rem;
     color: white;
 }
 
@@ -932,7 +932,6 @@ body {
 /* Post Previews */
 .post-previews {
     display: flex;
-    gap: 2rem;
     justify-content: center;
     margin: 2rem 0;
     flex-wrap: wrap;
@@ -961,7 +960,6 @@ body {
 .read-more-posts {
     color: var(--pink-primary);
     text-decoration: none;
-    font-weight: 600;
     border-bottom: 2px solid transparent;
 }
 
@@ -1085,7 +1083,6 @@ body {
     padding: 8px 20px;
     border-radius: 20px;
     cursor: pointer;
-    font-weight: 500;
     transition: all 0.3s ease;
 }
 
@@ -1128,7 +1125,6 @@ body {
     padding: 8px 16px;
     border-radius: 20px;
     cursor: pointer;
-    color: var(--pink-primary);
     transition: all 0.3s ease;
 }
 
@@ -1198,8 +1194,6 @@ body {
     border: none;
     padding: 12px 24px;
     border-radius: 25px;
-    font-weight: 600;
-    cursor: pointer;
     transition: all 0.3s ease;
 }
 
@@ -1236,9 +1230,6 @@ body {
     border: none;
     padding: 12px 24px;
     border-radius: 25px;
-    font-weight: 600;
-    cursor: pointer;
-    align-self: flex-start;
     transition: all 0.3s ease;
 }
 
@@ -1263,9 +1254,6 @@ body {
     color: var(--pink-primary);
     padding: 8px 16px;
     border-radius: 20px;
-    text-decoration: none;
-    font-weight: 500;
-    font-size: 0.9rem;
     transition: all 0.3s ease;
 }
 
@@ -1281,4 +1269,91 @@ body {
 
 .social-link.twitch { background: #9146ff; color: white; }
 .social-link.tiktok { background: #000; color: white; }
-.social-link.instagram { background: linear-gradient(45deg
+.social-link.instagram { background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); color: white;}
+
+/* Center and size the iframe in hero section */
+.hero-content iframe {
+    display: block;
+    margin: 2rem auto; /* Centers horizontally with top/bottom margin */
+    border: 0; /* Overrides inline style for consistency */
+    width: 400px; /* Increased from 300px */
+    height: 100px; /* Increased from 80px */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 1rem;
+    }
+    
+    .nav-menu {
+        gap: 1rem;
+    }
+    
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+    
+    .hero-content p {
+        font-size: 1.1rem;
+    }
+    
+    .section h2 {
+        font-size: 2rem;
+    }
+    
+    .content-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .video-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .hero-content iframe {
+        width: 300px;
+        height: 80px;
+    }
+}
+
+/* --- FIX: KEYFRAME DEFINITION FOR 'fadeInUp' ANIMATION --- */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translate3d(0, 40px, 0);
+    }
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+/* Ensure proper box sizing for all elements */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Focus styles for accessibility */
+button:focus,
+a:focus {
+    outline: 2px solid var(--pink-primary);
+    outline-offset: 2px;
+}
+
+/* Print styles */
+@media print {
+    .header,
+    .footer {
+        display: none;
+    }
+    
+    .hero {
+        margin-top: 0;
+        height: auto;
+    }
+}
