@@ -52,14 +52,10 @@ body {
     margin: 0 auto;
 }
 
-.nav-brand {
-    font-size: 1.8rem;
-    font-weight: 700;
-    background: linear-gradient(135deg, var(--pink-primary), var(--pink-secondary));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    text-shadow: 0 0 20px rgba(255, 105, 180, 0.3);
+.nav-brand img {
+    height: 45px; /* Adjust this value to your liking */
+    width: auto;
+    vertical-align: middle; /* Helps with alignment */
 }
 
 /* --- DESKTOP STATE (CLEAN) --- */
@@ -246,7 +242,7 @@ body {
 }
 
 /* Section Styles */
-.section {
+.section, .shop-section {
     padding: 100px 0;
 }
 
@@ -691,16 +687,31 @@ body {
     padding: 1.5rem;
     text-align: center;
     box-shadow: 0 10px 30px rgba(255, 105, 180, 0.1);
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(255, 105, 180, 0.2);
+}
+
+.product-card > p {
+    flex-grow: 1;
 }
 
 .product-image {
     height: 250px;
     border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Changed from cover to contain */
+    border-radius: 10px;
 }
 
 .price {
@@ -711,12 +722,19 @@ body {
 }
 
 .buy-button {
+    display: inline-block;
+    text-decoration: none;
+    font-family: inherit;
+    font-weight: 600;
+    text-align: center;
     background: var(--pink-primary);
     color: white;
     border: none;
     padding: 10px 25px;
     border-radius: 25px;
     transition: all 0.3s ease;
+    cursor: pointer;
+    margin-top: auto;
 }
 
 .buy-button:hover {
