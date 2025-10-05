@@ -7,6 +7,58 @@
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./styles.css">
+    <style>
+        /* UPDATED: Made hero section taller to fill the screen */
+        .meowtalk-hero {
+            /* Assumes header and footer are roughly 140px combined */
+            min-height: calc(100vh - 140px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* UPDATED: Made phrase text much larger */
+        #hourly-phrase {
+            font-size: 8vh; /* Font size is 8% of the viewport height */
+            font-style: italic;
+            font-weight: 600;
+            max-width: 900px;
+            margin: 0;
+            border-left: none;
+            padding-left: 0;
+            text-align: center;
+            line-height: 1.4;
+        }
+        .notification-controls {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background-color: transparent; /* Made transparent to focus on text */
+            border-radius: 10px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        #enable-notifications-btn {
+            background: var(--pink-light);
+            color: var(--pink-dark);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        #enable-notifications-btn:hover {
+            background: var(--white);
+        }
+        #notification-status {
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-top: 0.5rem;
+            color: var(--white);
+            opacity: 0.8;
+        }
+    </style>
 </head>
 <body>
 <header class="header">
@@ -20,43 +72,21 @@
             <li><a href="index.html">Home</a></li>
             <li><a href="videos.html">Videos</a></li>
             <li><a href="art.html">Art</a></li>
-            <li><a href="merch.html" class="active">Merch</a></li>
-            <li><a href="meowtalk.html">MeowTalk</a></li>
+            <li><a href="merch.html">Merch</a></li>
+            <li><a href="meowtalk.html" class="active">MeowTalk</a></li>
             <li><a href="posts.html">Posts</a></li>
         </ul>
     </nav>
 </header>
 
-    <!-- MeowTalk Hero -->
     <section class="hero meowtalk-hero">
         <div class="container">
-            <h1>MeowTalk</h1>
-            <p>Let's have a conversation</p>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section class="contact-section">
-        <div class="container">
-            <div class="contact-grid">
-                <div class="contact-card">
-                    <div class="contact-icon">🎙️</div>
-                    <h3>Podcasts</h3>
-                    <p>Listen to Meowbah's thoughts on chaos, cats, and everything in between</p>
-                    <a href="#" class="contact-link">Latest Episode</a>
-                </div>
-                <div class="contact-card">
-                    <div class="contact-icon">💬</div>
-                    <h3>Live Chats</h3>
-                    <p>Join Meowbah for live Q&A sessions and chaotic conversations</p>
-                    <a href="#" class="contact-link">Join Discord</a>
-                </div>
-                <div class="contact-card">
-                    <div class="contact-icon">📧</div>
-                    <h3>Contact</h3>
-                    <p>Got something to say? Meowbah wants to hear it!</p>
-                    <a href="#" class="contact-link">Send Message</a>
-                </div>
+            <h1 style="font-size: 2rem; opacity: 0.5;">MeowTalk</h1>
+            <blockquote id="hourly-phrase">Loading phrase...</blockquote>
+            
+            <div class="notification-controls">
+                <button id="enable-notifications-btn">Enable Hourly Notifications</button>
+                <p id="notification-status"></p>
             </div>
         </div>
     </section>

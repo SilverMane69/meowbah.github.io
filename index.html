@@ -11,19 +11,19 @@
     
     <meta name="theme-color" content="#ff69b4">
 
-<meta property="og:title" content="Meowbah | Official Website">
-<meta property="og:description" content="Creator of chaotic content, art, and meowtastic merch.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://silvermane69.github.io/meowbah.github.io/">
-<meta property="og:image" content="https://raw.githubusercontent.com/SilverMane69/meowbah.github.io/main/sitelogo.png">
-<meta property="og:image:alt" content="A banner for the Meowbah official website.">
+    <meta property="og:title" content="Meowbah | Unofficial Website">
+    <meta property="og:description" content="Creator of chaotic content, art, and meowtastic merch.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://silvermane69.github.io/meowbah.github.io/">
+    <meta property="og:image" content="https://raw.githubusercontent.com/SilverMane69/meowbah.github.io/main/sitelogo.png">
+    <meta property="og:image:alt" content="A banner for the Meowbah unofficial website.">
 
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Meowbah | Official Website">
-<meta name="twitter:description" content="Creator of chaotic content, art, and meowtastic merch.">
-<meta name="twitter:url" content="https://silvermane69.github.io/meowbah.github.io/">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/SilverMane69/meowbah.github.io/main/sitelogo.png">
-<meta name="twitter:image:alt" content="A banner for the Meowbah official website.">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Meowbah | Unofficial Website">
+    <meta name="twitter:description" content="Creator of chaotic content, art, and meowtastic merch.">
+    <meta name="twitter:url" content="https://silvermane69.github.io/meowbah.github.io/">
+    <meta name="twitter:image" content="https://raw.githubusercontent.com/SilverMane69/meowbah.github.io/main/sitelogo.png?v=2">
+    <meta name="twitter:image:alt" content="A banner for the Meowbah unofficial website.">
     
     <link rel="stylesheet" href="./styles.css">
 </head>
@@ -36,10 +36,10 @@
             </a>
         </div>
         <ul class="nav-menu">
-            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html" class="active">Home</a></li>
             <li><a href="videos.html">Videos</a></li>
             <li><a href="art.html">Art</a></li>
-            <li><a href="merch.html" class="active">Merch</a></li>
+            <li><a href="merch.html">Merch</a></li>
             <li><a href="meowtalk.html">MeowTalk</a></li>
             <li><a href="posts.html">Posts</a></li>
         </ul>
@@ -47,24 +47,16 @@
 </header>
     <section class="hero">
         <div class="hero-content">
-            <h1>Meowbah</h1>
+            <h1><img src="sitelogo.png" alt="Meowbah" style="max-width: 400px; height: auto;"></h1>
             <p>Creator of chaotic content, art, and meowtastic merch</p>
             <iframe height="100px" width="400px" frameborder="0" src="https://livecounts.io/embed/youtube-live-subscriber-counter/UCNytjdD5-KZInxjVeWV_qQw" style="border: 0;"></iframe>
         </div>
     </section>
     <section class="featured-section">
         <div class="container">
-            <h2 class="section-title">Latest Videos</h2>
-            <div class="video-preview">
-                <div class="video-thumb" style="background: linear-gradient(45deg, #ff69b4, #ff1493);">
-                    <span class="play-icon">▶</span>
-                </div>
-                <div class="video-info">
-                    <h3>Meowbah's Most Chaotic Year Yet</h3>
-                    <p class="video-meta">• 2.5M views • 3 days ago</p>
-                    <p>A look back at 2025's wildest moments, biggest collabs, and the cats that made it all possible.</p>
-                    <a href="videos.html" class="watch-more">Watch All Videos →</a>
-                </div>
+            <h2 class="section-title">Latest Video</h2>
+            <div class="video-preview" id="latest-video-preview">
+                <p>Loading latest video...</p>
             </div>
         </div>
     </section>
@@ -73,53 +65,46 @@
             <h2 class="section-title">Latest Art</h2>
             <div class="art-preview-grid">
                 <div class="art-preview">
-                    <div class="art-thumb" style="background: linear-gradient(135deg, #ffb6c1, #ff69b4);"></div>
-                    <h4>Feral Holiday Cat</h4>
-                    <p>Holiday chaos in pink</p>
+                    <div class="art-thumb" style="background-image: url('quran.jpg'); background-size: contain; background-position: center; background-repeat: no-repeat;"></div>
+                    <h4>Meow Reads The Quran</h4>
                 </div>
                 <div class="art-preview">
-                    <div class="art-thumb" style="background: linear-gradient(225deg, #ff1493, #c71585);"></div>
-                    <h4>Meowbah Moonlight</h4>
-                    <p>Mystical night vibes</p>
+                    <div class="art-thumb" style="background-image: url('friends.jpg'); background-size: contain; background-position: center; background-repeat: no-repeat;"></div>
+                    <h4>Meow and CommotionSickness</h4>
                 </div>
             </div>
-            <a href="art.html" class="view-gallery">View Gallery →</a>
+            <a href="art.html" class="view-gallery" style="background: #ff69b4; color: white; padding: 12px 30px; border-radius: 25px; text-decoration: none; display: inline-block; font-weight: 600; transition: all 0.3s ease;">View Gallery →</a>
         </div>
     </section>
     <section class="featured-merch">
         <div class="container">
-            <h2 class="section-title">Latest Merch</h2>
+            <h2 class="section-title">Featured Merch</h2>
             <div class="merch-preview">
                 <div class="product-preview">
-                    <div class="product-thumb" style="background: linear-gradient(45deg, #ff69b4, #ffb6c1);"></div>
-                    <h4>Meowbah Hoodie</h4>
-                    <p>$45.00</p>
+                    <div class="product-thumb">
+                         <img src="bodypillow.jpg" alt="Meowbah Dakimakura Body Pillow">
+                    </div>
+                    <h4>Meowbah Dakimakura</h4>
+                    <p>$88.10</p>
                 </div>
                 <div class="product-preview">
-                    <div class="product-thumb" style="background: linear-gradient(135deg, #ff1493, #c71585);"></div>
-                    <h4>Cat Ears Headset</h4>
-                    <p>$35.00</p>
+                    <div class="product-thumb">
+                        <img src="meowplush.webp" alt="Meowbah Plush">
+                    </div>
+                    <h4>Meowbah Plush</h4>
+                    <p>TBD</p>
                 </div>
             </div>
-            <a href="merch.html" class="shop-now">Shop Now →</a>
+            <a href="merch.html" class="shop-now" style="background: #ff69b4; color: white; padding: 12px 30px; border-radius: 25px; text-decoration: none; display: inline-block; font-weight: 600; transition: all 0.3s ease;">Shop Now →</a>
         </div>
     </section>
     <section class="featured-posts">
         <div class="container">
             <h2 class="section-title">Latest Posts</h2>
-            <div class="post-previews">
-                <div class="post-preview">
-                    <div class="post-thumb" style="background: linear-gradient(90deg, #ff69b4, #ff1493);"></div>
-                    <h4>Behind the Meow</h4>
-                    <p class="post-meta">• Oct 1, 2025</p>
-                </div>
-                <div class="post-preview">
-                    <div class="post-thumb" style="background: linear-gradient(180deg, #ffb6c1, #c71585);"></div>
-                    <h4>Collab Announcement</h4>
-                    <p class="post-meta">• Sep 28, 2025</p>
-                </div>
+            <div class="post-previews" id="latest-posts-preview">
+                 <p>Loading latest posts...</p>
             </div>
-            <a href="posts.html" class="read-more-posts">Read More Posts →</a>
+            <a href="posts.html" class="read-more-posts" style="background: #ff69b4; color: white; padding: 12px 30px; border-radius: 25px; text-decoration: none; display: inline-block; font-weight: 600; transition: all 0.3s ease;">Read More Posts →</a>
         </div>
     </section>
     <section class="cta-section">
@@ -127,11 +112,11 @@
             <h2>Join the Meowment</h2>
             <p>Subscribe for updates, exclusive content, and more meowtastic surprises!</p>
             <div class="cta-buttons">
-                <a href="https://www.youtube.com/channel/UCNytjdD5-KZInxjVeWV_qQw" target="_blank" class="cta-btn primary">
-                    <span class="youtube-icon">📺</span> Subscribe
+                <a href="https://www.tiktok.com/@meowbahx" target="_blank" class="cta-btn">
+                    Meow's TikTok
                 </a>
-                <a href="https://www.twitch.tv/meowbahh" target="_blank" class="cta-btn secondary">
-                    <span class="twitch-icon">🎮</span> Watch Live
+                <a href="https://discord.com/invite/meowcord" target="_blank" class="cta-btn">
+                    Meow's Discord
                 </a>
             </div>
         </div>
@@ -141,5 +126,6 @@
             <p>&copy; 2022-2025 Meowbah. All rights reserved.<br>Made with ❤️ by SilverMane69</p>
         </div>
     </footer>
+    <script src="script.js"></script>
 </body>
 </html>
