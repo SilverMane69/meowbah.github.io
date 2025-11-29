@@ -23,7 +23,8 @@ class YouTubeVideoLoader {
     }
 
     async loadVideos() {
-        const response = await fetch('meowbah-videos.xml');
+        const response = await fetch('https://api.allorigins.win/raw?url=' +
+        encodeURIComponent('https://www.youtube.com/feeds/videos.xml?channel_id=UCNytjdD5-KZInxjVeWV_qQw'));
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
@@ -322,7 +323,8 @@ window.onload = function() {
             const container = document.getElementById('latest-video-preview');
             if (!container) return;
 
-            fetch('meowbah-videos.xml')
+            fetch('https://api.allorigins.win/raw?url=' +
+            encodeURIComponent('https://www.youtube.com/feeds/videos.xml?channel_id=UCNytjdD5-KZInxjVeWV_qQw'))
                 .then(response => response.text())
                 .then(str => new window.DOMParser().parseFromString(str, "text/xml"))
                 .then(data => {
